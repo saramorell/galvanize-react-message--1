@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 
 class Edit extends Component {
 
+
   onSubmit = (e) => {
     e.preventDefault()
-    this.props.editMessage({id: this.props.messageToEdit.id, message: e.target.message.value, name:e.target.name.value})
+    this.props.editMessage(this.props.messageToEdit.id, e.target.message.value, e.target.name.value)
   }
 
   render() {
+    console.log(this.props.messageToEdit.id)
     return (
       <div>
         <form className="row" onSubmit={ () => this.onSubmit }>

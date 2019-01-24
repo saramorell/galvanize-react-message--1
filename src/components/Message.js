@@ -16,7 +16,6 @@ class Message extends Component {
 
 
     render() {
-      console.log(this.state.messageToEdit)
 
         return (
           <div>

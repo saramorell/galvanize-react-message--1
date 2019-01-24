@@ -60,6 +60,23 @@ class App extends Component {
       this.setState({ messages: this.state.messages.filter((message) => message.id !== id) })
     }
 
+    editMessage = async (id, message, name) => {
+      const response =  await fetch(`https://sm-assessment.herokuapp.com/messages/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+      const editedMessage = await response.json()
+
+      let indexOfEditedMessage = this.state.messages.findIndex(message => message.id === id)
+
+      this.setState({
+          messages: [...this.state.messages.slice(0,indexOfEditedMessage), editedMessage, ...this.state.messages.slice(indexOfEditedMessage + 1)]
+      })
+    }
+
 
 
 
