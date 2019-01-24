@@ -23,6 +23,8 @@ class App extends Component {
       return <Message {...m} key={i}
         messages={this.state.messages}
         deleteMessage={this.deleteMessage}
+        editToggle={this.editToggle}
+        editMessage={this.editMessage}
        />
     })
     this.setState({ messages:[...this.state.messages] })
@@ -31,6 +33,8 @@ class App extends Component {
   composeToggle = () => {
     this.setState({ composeOn: !this.state.composeOn })
   }
+
+
 
   addNewMessage = async (message) => {
     const response = await fetch('https://sm-assessment.herokuapp.com/messages', {

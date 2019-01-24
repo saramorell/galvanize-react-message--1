@@ -25,7 +25,7 @@ class Compose extends Component {
               </div>
               <button type="submit" className="btn btn-info">Submit</button>
 
-              <button className="btn btn-primary" onClick={this.props.composeToggle}>close</button>
+              <button style={{marginLeft: .5 +'em'}}className="btn btn-primary" onClick={this.props.composeToggle}>close</button>
 
             </form>
 

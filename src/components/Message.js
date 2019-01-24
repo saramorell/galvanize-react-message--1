@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
+import Edit from './Edit';
 
 class Message extends Component {
+
+  state= {
+    editOn: false,
+    messageToEdit: {}
+  }
+
+  editToggle = (message) => {
+    this.setState({ editOn: !this.state.editOn })
+
+  }
 
 
     render() {
@@ -12,9 +23,19 @@ class Message extends Component {
                 <div className="row">
 
                   <div id="name" className="col-md-2 ">{this.props.name}</div>
-                  <div id="message" className="col-md-8 ">{this.props.message}</div>
-                  <button id="delete" className="col-md-1 btn" onClick={()=>this.props.deleteMessage(this.props.id)}>delete</button>
-                  <button id="edit" className="col-md-1 btn">edit</button>
+                  <div id="message" className="col-md-7 ">{this.props.message}</div>
+                  <button id="delete" style={{marginRight: .3 +'em'}}className="col-md-1 btn btn-danger" onClick={()=>this.props.deleteMessage(this.props.id)}>delete</button>
+                  <button id="edit" className="col-md-1 btn btn-info"  onClick={()=>this.editToggle(this.props.id)}>edit</button>
+                </div>
+                <div className="col-md-6">
+                  {!this.state.editOn ? <div></div> :
+                    <Edit
+                    editMessage={this.props.editMessage}
+                    editToggle={this.props.editToggle}
+                    message={this.props.message}
+                    messages={this.props.messages}
+                    messageToEdit={this.props.messageToEdit} />}
+
                 </div>
               </div>
             </div>
